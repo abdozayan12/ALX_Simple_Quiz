@@ -1,16 +1,26 @@
+// Get references to the elements
 const rightanswer = document.getElementById("choice1");
 const wronganswer = document.getElementById("choice2");
 const wronganswer2 = document.getElementById("choice3");
 const submit = document.getElementById("submit-answer");
+const feedback = document.getElementById("feedback");
 
+// Add event listener to the submit button
 submit.addEventListener("click", checkAnswer);
 
 function checkAnswer() {
+  // Reset feedback text before checking answers
+  feedback.textContent = "";
+
+  // Check which answer is selected and provide feedback
   if (rightanswer.checked) {
-    alert("Correct!");
+    feedback.textContent = "Correct!";
+    feedback.style.color = "green";
   } else if (wronganswer.checked || wronganswer2.checked) {
-    alert("Incorrect");
+    feedback.textContent = "Incorrect";
+    feedback.style.color = "red";
   } else {
-    alert("Please select an answer");
+    feedback.textContent = "Please select an answer";
+    feedback.style.color = "orange";
   }
 }
