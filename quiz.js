@@ -17,7 +17,7 @@ function checkAnswer() {
     feedback.textContent = "Correct! Well done.";
     feedback.style.color = "green";
   } else if (wronganswer.checked || wronganswer2.checked) {
-    feedback.textContent = "hat's incorrect. Try again!";
+    feedback.textContent = "That's incorrect. Try again!";
     feedback.style.color = "red";
   } else {
     feedback.textContent = "Please select an answer";
