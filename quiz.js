@@ -1,34 +1,24 @@
 // Get references to the elements
-const choices = document.querySelectorAll('input[name="quiz"]');  // Select all radio buttons
+const rightanswer = document.getElementById("choice1");
+const wronganswer = document.getElementById("choice2");
+const wronganswer2 = document.getElementById("choice3");
 const submit = document.getElementById("submit-answer");
 const feedback = document.getElementById("feedback");
-
-// Add event listeners to the radio buttons to enable submit button when an answer is selected
-choices.forEach(choice => {
-  choice.addEventListener("change", () => {
-    submit.disabled = false;  // Enable the submit button when an option is selected
-    feedback.textContent = "";  // Clear feedback on new selection
-  });
-});
 
 // Add event listener to the submit button
 submit.addEventListener("click", checkAnswer);
 
 function checkAnswer() {
-  let selectedAnswer = document.querySelector('input[name="quiz"]:checked');
+  // Reset feedback text before checking answers
+  feedback.textContent = "";
 
-  if (selectedAnswer) {
-    if (selectedAnswer.value === "4") {
-      feedback.textContent = "Correct!";
-      feedback.style.color = "green";
-    } else {
-      feedback.textContent = "Incorrect";
-      feedback.style.color = "red";
-    }
-    // Disable submit button after answering until a new selection is made
-    submit.disabled = true;
-    // Reset the radio buttons after submitting an answer
-    selectedAnswer.checked = false;
+  // Check which answer is selected and provide feedback
+  if (rightanswer.checked) {
+    feedback.textContent = "Correct! Well done.";
+    feedback.style.color = "green";
+  } else if (wronganswer.checked || wronganswer2.checked) {
+    feedback.textContent = "That's incorrect. Try again!";
+    feedback.style.color = "red";
   } else {
     feedback.textContent = "Please select an answer";
     feedback.style.color = "orange";
